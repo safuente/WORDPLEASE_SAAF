@@ -1,0 +1,7 @@
+
+{% for blog in blogs %}
+    <a href="{% url 'posts_list_page' blog.user  %}" title="{{ blog.name }}">
+
+        <div>{{ blog.name }} </div>
+{% endfor %}
+
