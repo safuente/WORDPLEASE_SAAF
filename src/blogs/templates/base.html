@@ -9,10 +9,11 @@
 <body>
     <div class="menu">
         <a href="{% url "home_page" %}">Home</a> |
-        <a href=""{% url "blog_home" %}"">Blogs</a> |
-        <a href="">Login</a> |
-        <a href="">Logout</a> |
-        <a href="">Sign In</a>
+        <a href="{% url "blog_home" %}">Blogs</a> |
+        <a href="{% url "new_post" %}">New Post</a> |
+        <a href="{% url "login_page" %}">Login</a> |
+        <a href="{% url "logout_page" %}">Logout</a> |
+        <a href="{% url "signin_page" %}">Sign In</a>
 
         <hr>
         </div>

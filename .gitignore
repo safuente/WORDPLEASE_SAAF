@@ -71,6 +71,10 @@ docs/_build/
 # PyBuilder
 target/
 
+# Mac file
+*.DS_Store
+
+
 # Jupyter Notebook
 .ipynb_checkpoints
 
@@ -107,3 +111,6 @@ venv.bak/
 
 # pycharm
 .idea/
+
+#database
+db.sqlite3

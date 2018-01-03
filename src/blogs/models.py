@@ -34,7 +34,7 @@ class Blog(models.Model):
 class Post(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    blog = models.ForeignKey(Blog, on_delete=models.PROTECT)
+
     title = models.CharField(max_length=50)
     summary = models.TextField()
     body = models.TextField()
