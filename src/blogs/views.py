@@ -9,7 +9,7 @@ from blogs.templates.forms import PostForm
 
 
 def home(request):
-    posts = Post.objects.all().order_by('-created_at')
+    posts = Post.objects.all().order_by('-published_at')
     context = {'posts': posts}
     return render(request, "posts_list.html", context)
 
@@ -21,7 +21,7 @@ def blog_list(request):
 
 
 def post_list(request, username):
-    possible_posts = Post.objects.filter(user__username=username).order_by('-created_at')
+    possible_posts = Post.objects.filter(user__username=username).order_by('-published_at')
     if len(possible_posts) == 0:
         return render(request, "404.html", status=404)
     else:
