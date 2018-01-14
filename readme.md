@@ -1,3 +1,7 @@
+WORDPLEASE APP
+
+Weblog coded in Python using Django framework. An API rest using Django Rest is also included.
+
 # Development setup
 
 1. Install Python 3.6+
