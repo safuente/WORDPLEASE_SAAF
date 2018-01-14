@@ -18,7 +18,7 @@ from django.urls import path
 
 from blogs.api import BlogsListAPI, PostsListAPI, PostDetailAPI, PostsListUserAPI
 from blogs.views import home, post_list, post_detail, blog_list, CreatePostView
-from users.views import LoginView, logout, SignInView
+from users.views import LoginView, logout, SignUpView
 from users.api import  UsersListAPI, UserDetailAPI
 
 urlpatterns = [
@@ -30,7 +30,7 @@ urlpatterns = [
 
     path('login/', LoginView.as_view(), name="login_page"),
     path('logout/', logout, name="logout_page"),
-    path('signin/', SignInView.as_view(), name="signin_page"),
+    path('sign-up/', SignUpView.as_view(), name="signup_page"),
     path('new-post/',CreatePostView.as_view(), name="new_post"),
     path('', home, name="home_page"),
 

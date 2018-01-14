@@ -20,8 +20,6 @@ class BlogsListAPI(ListAPIView):
     search_fields = ["user__username"]
 
 
-    #ordering_fields = ('user__username',)
-
     def get_serializer_class(self):
         return BlogsListSerializer
 

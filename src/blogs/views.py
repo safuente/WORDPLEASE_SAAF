@@ -1,16 +1,16 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
-from django.views import View
 from django.urls import reverse
-
+from django.views import View
+from django.utils import timezone
+from blogs.forms import PostForm
 from blogs.models import Blog, Post
-from blogs.templates.forms import PostForm
 
 
 def home(request):
-    posts = Post.objects.all().order_by('-published_at')
-    context = {'posts': posts}
+    posts = Post.objects.all().order_by('-published_at').filter(published_at__lte=timezone.now())
+    context = {'posts': posts[:5]}
     return render(request, "posts_list.html", context)
 
 
@@ -52,7 +52,7 @@ class CreatePostView(LoginRequiredMixin,View):
 
     def post(self, request):
         blog_post = Post()
-        blog_post.user = request.user # asignamos a la pelicula el usuario autenticado
+        blog_post.user = request.user
         form = PostForm(request.POST, instance=blog_post)
         if form.is_valid():
             post = form.save()

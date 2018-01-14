@@ -6,19 +6,23 @@
     <meta charset="UTF-8">
     <title>{% block head_title %} WordPlease {% endblock %}</title>
     <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
-
+    <style type="text/css">a {text-decoration: none}</style>
 </head>
 <body>
     <div class="menu">
+
         <a href="{% url "home_page" %}">Home</a> |
         <a href="{% url "blog_home" %}">Blogs</a> |
         <a href="{% url "new_post" %}">New Post</a> |
         <a href="{% url "login_page" %}">Login</a> |
         <a href="{% url "logout_page" %}">Logout</a> |
-        <a href="{% url "signin_page" %}">Sign In</a> |
+        <a href="{% url "signup_page" %}">Sign Up</a> |
         <a > Logged as {{ request.user }}</a>
+
         <hr>
         </div>
+        <a><span><h1 align="center">WORDPLEASE</h1></span></a>
+
 {% block content %}{% endblock %}
 </body>
 </html>

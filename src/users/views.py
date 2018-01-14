@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 
 from blogs.models import Blog
-from users.forms import LoginForm, SignInForm
+from users.forms import LoginForm, SignUpForm
 
 
 class LoginView(View):
@@ -31,27 +31,28 @@ class LoginView(View):
         return render(request, "login_form.html", context)
 
 
-class SignInView(View):
+class SignUpView(View):
 
     def get(self, request):
-        context = {'form': SignInForm()}
-        return render(request, "signin_form.html", context)
+        context = {'form': SignUpForm()}
+        return render(request, "signup_form.html", context)
 
     def post(self, request):
         user_post = User()
-        form = SignInForm(request.POST, instance= user_post)
+        form = SignUpForm(request.POST, instance= user_post)
         if form.is_valid():
             user_post.set_password(form.cleaned_data.get("password"))
             user_post = form.save()
-            default_blog_name= "Weblog " + user_post.username
-            blog_default = Blog(description="",name="Weblog " + user_post.username,user=user_post)
+            default_blog_name= "Weblog " + str(user_post.username)
+            url = "/blogs/" + str(user_post.username)
+            blog_default = Blog(description="",name="Weblog " + user_post.username,user=user_post, url=url)
             blog_default.save()
-            form = SignInForm()
+            form = SignUpForm()
             message = "User "+user_post.username+" registered successfully! "
             message+= "Your default blog name is "+ default_blog_name
             messages.success(request, message)
         context = {'form': form}
-        return render(request, "signin_form.html", context)
+        return render(request, "signup_form.html", context)
 
 
 def logout(request):
